@@ -1,4 +1,6 @@
 class Admin::YearsController < ApplicationController
+	before_action :authenticate_admin!, only: %i[new create index edit update destroy]
+	
   def new
   end
 
