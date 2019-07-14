@@ -1,0 +1,29 @@
+require 'test_helper'
+
+class Admin::MoviesControllerTest < ActionDispatch::IntegrationTest
+  test "should get new" do
+    get admin_movies_new_url
+    assert_response :success
+  end
+
+  test "should get show" do
+    get admin_movies_show_url
+    assert_response :success
+  end
+
+  test "should get index" do
+    get admin_movies_index_url
+    assert_response :success
+  end
+
+  test "should get search" do
+    get admin_movies_search_url
+    assert_response :success
+  end
+
+  test "should get edit" do
+    get admin_movies_edit_url
+    assert_response :success
+  end
+
+end
