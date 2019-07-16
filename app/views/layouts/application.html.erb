@@ -9,7 +9,81 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
-  </body>
-</html>
+    <body>
+      <header class="navbar navbar-fixed-top">
+        <nav>
+          <% if admin_signed_in? %>
+            <div class="logo">
+              <%= link_to admin_movies_path do %>
+                <%= image_tag "logo.png", class: "logo-image", size: "240x100" %>
+              <% end %>
+             </div>
+               <li class="nav-item">
+                 <%= link_to "会員リスト", admin_users_path, :style => "color:black;", :class =>"fas fa-users" %>
+               </li>
+               <li class="nav-item">
+                 <%= link_to "映画一覧",admin_movies_path, :style => "color:black;", :class =>"fas fa-compact-disc" %>
+               </li>
+               <li class="nav-item">
+                 <%= link_to "映画追加",new_admin_movie_path, :style => "color:black;", :class =>"fas fa-plus-square" %>
+               </li>
+                 <dl class="searchbox">
+                   <%= form_tag admin_search_movies_path, :method => 'get' do %>
+                     <%= text_field_tag :search, "", size: "40",placeholder: "映画名/出演者名" %>
+                     <%= submit_tag "Search", :name => nil %>
+                   <% end %>
+                 </dl>
+               </li>
+             <li class="nav-item">
+               <%= link_to "LOG OUT", destroy_admin_session_path, method: :delete, :style => "color:black;" %>
+             </li>
+          </nav>
+
+        <% elsif user_signed_in? %>
+          <nav>
+            <div class="logo">
+              <%= link_to movies_path do %>
+                <%= image_tag "logo.png", class: "logo-image", size: "240x100" %>
+              <% end %>
+            </div>
+              <li class="nav-item">
+                <%= link_to "MY PAGE", user_path(current_user), :style => "color:black;", :class =>"fas fa-user" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "LOG OUT", destroy_user_session_path, method: :delete, :style => "color:black;", :class =>"fas fa-sign-out-alt" %>
+              </li>
+              <dl class="searchbox">
+                <%= form_tag search_movies_path, :method => 'get' do %>
+                  <%= text_field_tag :search, params[:search], size: "40",placeholder: "映画名/出演者名" %>
+                  <%= submit_tag "Search", :name => nil %>
+                <% end %>
+              </dl>
+           </nav>
+
+        <% else %>
+          <nav>
+            <div class="logo">
+              <%= link_to movies_path do %>
+              <%= image_tag "logo.png", class: "logo-image", size: "240x100" %>
+              <% end %>
+            </div>
+            <li class="nav-item">
+              <%= link_to "LOG IN", new_user_session_path, :style => "color:black;", :class =>"fas fa-sign-in-alt" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "SIGN UP", new_user_registration_path, :style => "color:black;", :class =>"fas fa-user-plus" %>
+            </li>
+            <dl class="searchbox">
+              <%= form_tag search_movies_path, :method => 'get' do %>
+                <%= text_field_tag :search, params[:search], size: "40",placeholder: "映画名/出演者名" %>
+                <%= submit_tag "Search", :name => nil %>
+              <% end %>
+            </dl>
+          </nav>
+        <% end %>
+
+      </header>
+     <%= yield %>
+    </body>
+  </html>
+

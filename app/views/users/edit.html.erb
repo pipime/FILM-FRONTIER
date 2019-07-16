@@ -1,2 +1,20 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h1>ユーザー情報編集</h1>
+
+<%= form_for(@user) do |f| %>
+
+  <h4>ユーザー名</h4>
+  <table>
+    <tr>
+      <td><%= f.label :name %></td>
+      <td><%= f.text_field :name, placeholder:"名前"%></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><%= f.text_field :introduction, placeholder:"自己紹介", size: "50" %></td>
+    </tr>
+  </table>
+
+  <%= f.submit "確定", class: 'btn btn-success' %>
+
+<% end %>
+
