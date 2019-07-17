@@ -1,6 +1,7 @@
 class Admin::UsersController < ApplicationController
-    before_action :authenticate_user!,  only: [:show, :edit, :update, :resign, :destroy]
-    before_action :authenticate_admin!, only: [:show, :edit, :update, :destroy, :index]
+
+　before_action :authenticate_user!,  only: [:show, :edit, :update, :resign, :destroy]
+　before_action :authenticate_admin!, only: [:show, :edit, :update, :destroy, :index]
 
   def index
   end
@@ -9,7 +10,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def edit
-  	@user = User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def update
@@ -35,7 +36,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def search
-  	@users = User.search(params[:search])
+    @users = User.search(params[:search])
     @users_page = User.page(params[:page]).reverse_order
     render :search
   end

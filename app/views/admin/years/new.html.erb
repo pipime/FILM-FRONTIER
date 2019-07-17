@@ -1,2 +1,19 @@
-<h1>Admin::Years#new</h1>
-<p>Find me in app/views/admin/years/new.html.erb</p>
+
+  <%= form_for @year, url: admin_years_path do |f| %>
+
+      <h1> 制作年追加</h1>
+        <p> year</p>
+
+          <%= f.text_field :year %>
+
+          <%= f.submit "add" %>
+
+  <% end %>
+
+      <h1> 制作年一覧</h1>
+
+  <% @years.each do |year| %>
+
+        <p> <%= year.id %>::<%= year.year %></p>
+
+  <% end %>

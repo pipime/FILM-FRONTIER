@@ -1,2 +1,33 @@
-<h1>Admin::Users#search</h1>
-<p>Find me in app/views/admin/users/search.html.erb</p>
+<div class="user-index-title">
+	<p>会員一覧:検索結果</p>
+</div>
+  <div class="user-index-search">
+  	<%= form_tag(admin_search_users_path,:method => 'get') do %>
+  	  <%= text_field_tag :search, "", size: "40" %>
+  	  <%= submit_tag '検索', :name => nil, class:"btn btn-default" %>
+  	<% end %>
+  </div>
+
+  <% @users.each do |user| %>
+
+　<table border="3", class="user-index-table">
+ 	<thead>
+ 		<tr>
+ 			<th>ユーザー名</th>
+ 			<th>メールアドレス</th>
+ 		</tr>
+ 	</thead>
+
+ 	<tbody>
+ 		<tr>
+ 			<td> <%= user.name %></td>
+ 			<td> <%= user.email %></td>
+ 		</tr>
+ 	</tbody>
+　</table>
+
+  <p class="user-index-detail"> <%= link_to "ユーザー詳細", admin_user_path(user), class:"btn btn-primary" %></p>
+
+<% end %>
+
+<%= paginate @users_page %>

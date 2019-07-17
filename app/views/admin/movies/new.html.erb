@@ -1,2 +1,31 @@
-<h1>Admin::Movies#new</h1>
-<p>Find me in app/views/admin/movies/new.html.erb</p>
+  <h1> 映画追加</h1>
+
+	<p><%= link_to "制作年追加ページ", new_admin_year_path %> </p>
+
+	<p><%= link_to "ジャンル追加ページ", new_admin_genre_path %> </p>
+
+	<p><%= link_to "出演者追加ページ", new_admin_cast_path %> </p>
+
+
+	<%= form_for @movie, url: admin_movies_path do |f| %>
+
+	<%= f.attachment_field :jacket_image %>
+
+		<h4> タイトル</h4>
+		<%= f.text_field :title %>
+
+        <h4> 制作年</h4>
+        <%= f.select :year_id, Year.all.map{|y| [y.year, y.id] } %>
+
+        <h4> ジャンル</h4>
+        <%= f.select :genre_id, Genre.all.map{|g| [g.genre, g.id] } %>
+
+        <h4> あらすじ</h4>
+        <%= f.text_area :summary %>
+
+        <h4> 出演者</h4>
+        <%= f.select :cast_id, Cast.all.map{|c| [c.cast, c.id] } %>
+
+        <br>
+        <%= f.submit '登録', id:"back" , class: "btn btn-primary btn-lg"%>
+    <% end %>
