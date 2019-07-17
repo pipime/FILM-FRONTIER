@@ -1,12 +1,14 @@
 class Admin::UsersController < ApplicationController
 
-　before_action :authenticate_user!,  only: [:show, :edit, :update, :resign, :destroy]
-　before_action :authenticate_admin!, only: [:show, :edit, :update, :destroy, :index]
+  before_action :authenticate_admin!, only: [:show, :edit, :update, :destroy, :index]
 
   def index
+    @users = User.all
+    @users = User.page(params[:page]).reverse_order
   end
 
   def show
+    @user = User.find(params[:id])
   end
 
   def edit
@@ -30,10 +32,6 @@ class Admin::UsersController < ApplicationController
     redirect_to admin_user_path(@user)
   end
 
-  def index
-    @users = User.all
-    @users = User.page(params[:page]).reverse_order
-  end
 
   def search
     @users = User.search(params[:search])

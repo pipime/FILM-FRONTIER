@@ -2,17 +2,27 @@
 
 <%= form_for(@user) do |f| %>
 
+  <h4> イメージ</h4>
+    <%= f.attachment_field :profile_image %>
+
   <h4>ユーザー名</h4>
-  <table>
     <tr>
       <td><%= f.label :name %></td>
       <td><%= f.text_field :name, placeholder:"名前"%></td>
     </tr>
+
+  <h4>メールアドレス</h4>
     <tr>
-      <td></td>
-      <td><%= f.text_field :introduction, placeholder:"自己紹介", size: "50" %></td>
+      <td><%= f.label :email %></td>
+      <td><%= f.text_field :email, placeholder:"メールアドレス"%></td>
     </tr>
-  </table>
+
+
+  <h4>プロフィール</h4>
+
+      <td><%= f.text_area :introduction, placeholder:"自己紹介", size: "50" %></td>
+    </tr>
+
 
   <%= f.submit "確定", class: 'btn btn-success' %>
 

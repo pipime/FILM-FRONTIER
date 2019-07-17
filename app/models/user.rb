@@ -10,6 +10,8 @@ class User < ApplicationRecord
   validates :name,     presence: true
   validates :email,    presence: true, uniqueness: true
 
+  attachment :profile_image
+
   def self.search(search)
   	unless search
   	  return User.all

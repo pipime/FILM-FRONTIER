@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :authenticate_user!,  only: [:show, :edit, :update, :resign, :destroy]
-  before_action :authenticate_admin!, only: [:show, :edit, :update, :destroy, :index]
+  before_action :authenticate_user!, only: %i[show edit update resign destroy]
 
   def show
     @user = User.find(params[:id])
@@ -30,9 +29,6 @@ class UsersController < ApplicationController
     user = current_user
     user.destroy
     redirect_to root_path
-  end
-
-  def index
   end
 
   private

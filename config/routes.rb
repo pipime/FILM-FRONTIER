@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     end
 
   get "user/resign" => "users#resign"
+  # get 'admin/users' => 'users#index'
 
   root "movies#index"
 end
