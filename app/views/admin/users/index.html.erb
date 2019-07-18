@@ -1,7 +1,6 @@
 <div class="user-index-title">
-  <h1>会員一覧</h1>
+  <h1>ユーザー一覧</h1>
 </div>
-
     <div class="user-index-search">
       <%= form_tag(admin_search_users_path,:method => 'get') do %>
         <%= text_field_tag :search, "", size: "40" , placeholder: "ユーザー名" %>
@@ -9,13 +8,15 @@
       <% end %>
     </div>
 <br />
-<table border="1", class="user-index-table">
-  <thead>
+<table class="table">
+<table border="2", class="user-index-table">
+  <thead class="thead-dark">
     <tr>
        <th>ユーザー名</th>
        <th>メールアドレス</th>
     </tr>
   </thead>
+
   <% @users.each do |user| %>
     <tbody>
       <tr>

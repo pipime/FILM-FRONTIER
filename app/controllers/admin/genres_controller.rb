@@ -23,9 +23,19 @@ class Admin::GenresController < ApplicationController
   end
 
   def edit
+    @genre = Genre.find(params[:id])
+    @movie = Movie.find(params[:movie_id])
   end
 
   def update
+    @genre = Genre.find(params[:id])
+    if @genre.update(genre_params)
+      flash[:notice] = "ジャンル名: " + @genre.genre + "に編集しました"
+      redirect_to edit_admin_movie_path(params[:genre][:movie_id])
+    else
+      flash[:notice] = "ジャンル編集に失敗しました"
+      render :edit
+    end
   end
 
   def destroy

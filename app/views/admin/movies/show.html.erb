@@ -1,2 +1,17 @@
-<h1>Admin::Movies#show</h1>
-<p>Find me in app/views/admin/movies/show.html.erb</p>
+    <div>
+	    <%= attachment_image_tag @movie, :jacket_image, fallback: "nono_images.png", size: '260x364' %>
+    </div>
+
+    <div>
+      <h2><%= @movie.title %></h2>
+        <P><%= @movie.year.year %>制作の映画</P>
+        <p>ジャンル:<%= @movie.genre.genre %></p>
+        <p>出演者:<%= @movie.cast.cast %></p>
+        <h4>あらすじ</h4>
+        <p><%= @movie.summary %></p>
+
+    </div>
+    <div>
+    	<%= link_to "映画編集" , edit_admin_movie_path, class: "btn btn-primary btn-lg" %>
+    </div>
+

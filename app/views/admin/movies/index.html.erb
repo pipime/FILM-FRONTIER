@@ -1,2 +1,16 @@
-<h1>Admin::Movies#index</h1>
-<p>Find me in app/views/admin/movies/index.html.erb</p>
+<% @movies.each do |movie| %>
+  <div>
+    <%= link_to admin_movie_path(movie) do %>
+      <%= attachment_image_tag movie, :jacket_image, class: "item-index-jacket-image", fallback: "nono_images.png", size: '260x364' %>
+    <% end %>
+
+      <p><%= link_to admin_movie_path(movie) do %>
+      	   <h4><%= movie.title %></h4>
+      	 <% end %>
+      </p>
+      <P><%= movie.year.year %>制作</P>
+      <p>ジャンル:<%= movie.genre.genre %></p>
+      <p>出演者:<%= movie.cast.cast %></p>
+  </div>
+<% end %>
+<%= paginate @movies %>

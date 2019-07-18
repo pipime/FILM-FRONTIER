@@ -1,2 +1,7 @@
-<h1>Admin::Genres#edit</h1>
-<p>Find me in app/views/admin/genres/edit.html.erb</p>
+  <h2> ジャンル編集</h2>
+    <%= form_for @genre, url:admin_genre_path do |f| %>
+      <strong> ジャンル</strong>
+      <p><%= f.text_field :genre, class:"form-control" %></p>
+      <%= f.hidden_field :movie_id, :value => @movie.id %>
+      <%= f.submit 'update genre', id:"back" %>
+    <% end %>

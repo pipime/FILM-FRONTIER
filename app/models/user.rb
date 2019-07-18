@@ -16,7 +16,7 @@ class User < ApplicationRecord
   	unless search
   	  return User.all
   	else
-  	  return User.where(['name LIKE ?', "%#{search}%"])
+  	  return User.where(['name LIKE ? OR email LIKE ?', "%#{search}%", "%#{search}%"])
     end
   end
 end

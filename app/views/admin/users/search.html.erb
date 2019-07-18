@@ -10,7 +10,7 @@
 
   <% @users.each do |user| %>
 
-　<table border="3", class="user-index-table">
+　<table border="2", class="user-index-table">
  	<thead>
  		<tr>
  			<th>ユーザー名</th>
@@ -22,11 +22,11 @@
  		<tr>
  			<td> <%= user.name %></td>
  			<td> <%= user.email %></td>
+            <td class="user-index-detail"> <%= link_to "ユーザー詳細", admin_user_path(user), class:"btn btn-primary" %></td>
  		</tr>
  	</tbody>
 　</table>
 
-  <p class="user-index-detail"> <%= link_to "ユーザー詳細", admin_user_path(user), class:"btn btn-primary" %></p>
 
 <% end %>
 

@@ -1,4 +1,7 @@
 class Movie < ApplicationRecord
+
+	paginates_per 7
+
 	has_many :reviews, dependent: :destroy
 	has_many :likes, dependent: :destroy
 

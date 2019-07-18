@@ -1,3 +1,59 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.back-rgba {
+	background-color: rgba(12, 12, 12, 0.8);
+	width: 100%;
+	margin: 0 auto;
+ 	min-height: 600px;
+}
+
+
+.user-index-title{
+ 	width: 90%;
+	margin: auto auto;
+	padding-top: 10px;
+	font-size: 36px;
+}
+
+.user-index-search{
+	width: 90%;
+	margin: auto auto;
+	font-size: 15px;
+}
+
+.user-index-table{
+	width: 90%;
+	margin: 10px auto;
+}
+
+.user-index-detail{
+	text-align: center;
+	height: 43px;
+	padding: auto auto;
+}
+
+.wrapper{
+ 	margin: 30px 50px 30px 50px;
+}
+
+.mypage-infobox{
+	width: 60%;
+}
+
+.mypage-infobox-title{
+	width: 25%;
+	text-align: center;
+}
+
+.mypage-infobox-body{
+}
+
+.mypage-address-name{
+	width: 300px;
+}
+
+.mypage-address{
+	width: 400px;
+}
