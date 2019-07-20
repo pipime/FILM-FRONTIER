@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "search_users" => "users#search",as: 'search_users'
-    get "search_movies" => "items#search", as:'search_movies'
+    get "search_movies" => "movies#search", as:'search_movies'
 
     resources :users,        only:[:index, :show, :edit, :update, :destroy]
     resources :movies,       only:[:new, :create, :edit, :update, :destroy, :show, :index] do

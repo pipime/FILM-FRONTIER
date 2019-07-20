@@ -7,6 +7,9 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Patua+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
+    <link rel="stylesheet" href="style.css">
   </head>
 
     <body>
@@ -22,7 +25,7 @@
                  <%= link_to "会員リスト",admin_users_path, :style => "color:black;", :class =>"fas fa-users" %>
                </li>
                <li class="nav-item">
-                 <%= link_to "映画一覧",admin_movies_path, :style => "color:black;", :class =>"fas fa-compact-disc" %>
+                 <%= link_to "映画一覧",admin_movies_path, :style => "color:black;", :class =>"fas fa-fal fa-film" %>
                </li>
                <li class="nav-item">
                  <%= link_to "映画追加",new_admin_movie_path, :style => "color:black;", :class =>"fas fa-plus-square" %>
@@ -35,7 +38,7 @@
                  </dl>
                </li>
              <li class="nav-item">
-               <%= link_to "LOG OUT", destroy_admin_session_path, method: :delete, :style => "color:black;" %>
+               <%= link_to "LOG OUT", destroy_admin_session_path, method: :delete, :style => "color:black;", :class =>"fas fa-sign-out-alt" %>
              </li>
           </nav>
 
@@ -83,6 +86,9 @@
         <% end %>
 
       </header>
+          <% if flash[:notice] %>
+            <p><%= flash[:notice] %></p>
+          <% end %>
      <%= yield %>
     </body>
   </html>

@@ -15,14 +15,14 @@ class Admin::MoviesController < ApplicationController
   end
 
   def search
-    @movie = Movie.search(params[:search])
+    @movies = Movie.search(params[:search])
     render :search
   end
 
   def create
     @movie = Movie.new(movie_params)
     if @movie.save
-      flash[:notice] = "映画タイトル: " + @movie.title + "を追加しました"
+      flash[:notice] = "映画:" + @movie.title + "を追加しました"
       redirect_to admin_movies_path
     else
       flash[:notice] = "映画追加に失敗しました"
@@ -40,7 +40,7 @@ class Admin::MoviesController < ApplicationController
   def update
     @movie = Movie.find(params[:id])
     if @movie.update(movie_params)
-      flash[:notice] = "映画タイトル: " + @movie.title + "を編集しました"
+      flash[:notice] = "映画: " + @movie.title + "を編集しました"
       redirect_to admin_movie_path(@movie)
     else
       flash[:notice] = "映画編集に失敗しました"
@@ -58,6 +58,4 @@ class Admin::MoviesController < ApplicationController
   def movie_params
     params.require(:movie).permit(:title, :summary, :jacket_image, :cast_id, :year_id, :genre_id)
   end
-
-
 end

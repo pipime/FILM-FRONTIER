@@ -12,6 +12,10 @@ class User < ApplicationRecord
 
   attachment :profile_image
 
+  acts_as_paranoid
+
+  default_scope -> { order(name: :desc) }
+
   def self.search(search)
   	unless search
   	  return User.all

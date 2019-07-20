@@ -15,3 +15,9 @@
     	<%= link_to "映画編集" , edit_admin_movie_path, class: "btn btn-primary btn-lg" %>
     </div>
 
+
+    <dr>
+       <% @movie.reviews.each do |review| %>
+         <p><%= review.body %></p>
+       <% end %>
+
