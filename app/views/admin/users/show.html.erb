@@ -1,19 +1,19 @@
-<h1 class="fas fa-user">ユーザー詳細</h1>
+<h1>ユーザー詳細</h1>
 
   <h3>ユーザー情報</h3>
     <table>
       <%= attachment_image_tag @user, :profile_image, fallback: "no_images.png", size: '150x150' %>
     	<tr>
-    		<td>ニックネーム</td>
-    		<td><%= @user.name %></td>
+            <td>ニックネーム</td>
+            <td><%= @user.name %></td>
     	</tr>
     	<tr>
-    		<td>メールアドレス</td>
-    		<td><%= @user.email %></td>
+            <td>メールアドレス</td>
+            <td><%= @user.email %></td>
     	</tr>
     	<tr>
-    		<td>プロフィール</td>
-    		<td><%= @user.introduction %></td>
+            <td>プロフィール</td>
+            <td><%= @user.introduction %></td>
     	</tr>
     </table>
         <br>

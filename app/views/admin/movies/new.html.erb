@@ -21,11 +21,11 @@
         <%= f.select :genre_id, Genre.all.map{|g| [g.genre, g.id] } %>
 
         <h4> あらすじ</h4>
-        <%= f.text_area :summary %>
+        <%= f.text_area :summary, class: "form-control w-75" %>
 
         <h4> 出演者</h4>
         <%= f.select :cast_id, Cast.all.map{|c| [c.cast, c.id] } %>
 
         <br>
-        <%= f.submit '登録', id:"back" , class: "btn btn-primary btn-lg"%>
+        <%= f.submit '登録', id:"back" , class: "btn btn-dark"%>
     <% end %>

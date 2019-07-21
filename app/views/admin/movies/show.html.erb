@@ -1,23 +1,35 @@
     <div>
-	    <%= attachment_image_tag @movie, :jacket_image, fallback: "nono_images.png", size: '260x364' %>
-    </div>
-
-    <div>
       <h2><%= @movie.title %></h2>
-        <P><%= @movie.year.year %>制作の映画</P>
-        <p>ジャンル:<%= @movie.genre.genre %></p>
-        <p>出演者:<%= @movie.cast.cast %></p>
-        <h4>あらすじ</h4>
-        <p><%= @movie.summary %></p>
-
+	    <%= attachment_image_tag @movie, :jacket_image, fallback: "nono_images.png", size: '260x364' %>
+      <P><%= @movie.year.year %>制作の映画</P>
+      <p>ジャンル:<%= @movie.genre.genre %></p>
+      <p>出演者:<%= @movie.cast.cast %></p>
+      <h4>あらすじ</h4>
+      <p><%= @movie.summary %></p>
     </div>
+
     <div>
     	<%= link_to "映画編集" , edit_admin_movie_path, class: "btn btn-primary btn-lg" %>
     </div>
 
+<p></p><dr>
+  <h2>レビュー一覧</h2>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th></th>
+          <th>コメント</th>
+          <th>日時</th>
+        </tr>
+      </thead>
 
-    <dr>
-       <% @movie.reviews.each do |review| %>
-         <p><%= review.body %></p>
-       <% end %>
-
+  <% @movie.reviews.each do |review| %>
+    <tbody>
+      <tr>
+        <td><%= attachment_image_tag @user, :profile_image, fallback: "no_images.png", size: '150x150' %></td>
+        <td><%= review.body %></td>
+        <td><%= review.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+      </tr>
+    </tbody>
+  <% end %>
+</table>
