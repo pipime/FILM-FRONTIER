@@ -9,9 +9,9 @@
            <h4><%= movie.title %></h4>
          <% end %>
       </p>
-      <P><%= movie.year.year %>制作</P>
-      <p>ジャンル:<%= movie.genre.genre %></p>
-      <p>出演者:<%= movie.cast.cast %></p>
+        <P><%= movie.year.year %>制作</P>
+        <p>ジャンル:<%= movie.genre.genre %></p>
+        <p>出演者:<%= movie.cast.cast %></p>
   </div>
 <% end %>
 <%= paginate @movies %>

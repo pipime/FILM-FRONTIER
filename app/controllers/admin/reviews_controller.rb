@@ -12,8 +12,18 @@ class Admin::ReviewsController < ApplicationController
   end
 
   def destroy
+    review = Review.find(params[:id])
+    @review = current_user.reviews.find(params[:id])
+    review.movie_id = movie.id
+    review.destroy
+    redirect_to admin_movie_path
   end
 
   def update
+  end
+
+  private
+  def review_params
+    params.require(:review).permit(:body, :user_id, :movie_id)
   end
 end

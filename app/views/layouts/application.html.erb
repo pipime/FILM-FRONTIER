@@ -13,7 +13,7 @@
   </head>
 
     <body>
-      <header class="navbar navbar-fixed-top">
+      <header class="navbar">
        <div class="container">
         <nav>
           <% if admin_signed_in? %>
@@ -23,23 +23,23 @@
               <% end %>
              </div>
                <li class="nav-item">
-                 <%= link_to "会員リスト",admin_users_path, :style => "color:black;", :class =>"fas fa-users" %>
+                 <%= link_to "会員リスト",admin_users_path, :style => "color:white;", :class =>"fas fa-users" %>
                </li>
                <li class="nav-item">
-                 <%= link_to "映画一覧",admin_movies_path, :style => "color:black;", :class =>"fas fa-fal fa-film" %>
+                 <%= link_to "映画一覧",admin_movies_path, :style => "color:white;", :class =>"fas fa-fal fa-film" %>
                </li>
                <li class="nav-item">
-                 <%= link_to "映画追加",new_admin_movie_path, :style => "color:black;", :class =>"fas fa-plus-square" %>
+                 <%= link_to "映画追加",new_admin_movie_path, :style => "color:white;", :class =>"fas fa-plus-square" %>
                </li>
-                 <dl class="searchbox">
-                   <%= form_tag admin_search_movies_path, :method => 'get' do %>
-                     <%= text_field_tag :search, "", size: "40",placeholder: "映画名/出演者名" %>
-                     <%= submit_tag "Search", :title => nil %>
-                   <% end %>
-                 </dl>
+               <dl class="searchbox">
+                <%= search_form_for @search, url: movies_path do |f| %>
+                  <%= f.text_field :title_cont, size: "40",placeholder: "映画名/出演者名" %>
+                  <%= f.submit ("  検索  ") %>
+                <% end %>
+              </dl>
                </li>
              <li class="nav-item">
-               <%= link_to "LOG OUT", destroy_admin_session_path, method: :delete, :style => "color:black;", :class =>"fas fa-sign-out-alt" %>
+               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, :style => "color:white;", :class =>"fas fa-sign-out-alt" %>
              </li>
           </nav>
 
@@ -51,18 +51,18 @@
               <% end %>
             </div>
               <li class="nav-item">
-                <%= link_to "MY PAGE", user_path(current_user), :style => "color:black;", :class =>"fas fa-user" %>
+                <%= link_to "  検索  ", user_path(current_user), :style => "color:white;", :class =>"fas fa-user" %>
               </li>
               <li class="nav-item">
-                <%= link_to "LOG OUT", destroy_user_session_path, method: :delete, :style => "color:black;", :class =>"fas fa-sign-out-alt" %>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, :style => "color:white;", :class =>"fas fa-sign-out-alt" %>
               </li>
               <dl class="searchbox">
-                <%= form_tag search_movies_path, :method => 'get' do %>
-                  <%= text_field_tag :search, params[:search], size: "40",placeholder: "映画名/出演者名" %>
-                  <%= submit_tag "Search", :title => nil %>
+                <%= search_form_for @search, url: movies_path do |f| %>
+                  <%= f.text_field :title_cont, size: "40",placeholder: "映画名/出演者名" %>
+                  <%= f.submit ("  検索  ") %>
                 <% end %>
               </dl>
-           </nav>
+            </nav>
 
         <% else %>
           <nav>
@@ -72,15 +72,15 @@
               <% end %>
             </div>
             <li class="nav-item">
-              <%= link_to "LOG IN", new_user_session_path, :style => "color:black;", :class =>"fas fa-sign-in-alt" %>
+              <%= link_to "ログイン", new_user_session_path, :style => "color:white;", :class =>"fas fa-sign-in-alt" %>
             </li>
             <li class="nav-item">
-              <%= link_to "SIGN UP", new_user_registration_path, :style => "color:black;", :class =>"fas fa-user-plus" %>
+              <%= link_to "新規登録", new_user_registration_path, :style => "color:white;", :class =>"fas fa-user-plus" %>
             </li>
             <dl class="searchbox">
-              <%= form_tag search_movies_path, :method => 'get' do %>
-                <%= text_field_tag :search, params[:search], size: "40",placeholder: "映画名/出演者名" %>
-                <%= submit_tag "Search", :title => nil %>
+              <%= search_form_for @search, url: movies_path do |f| %>
+                <%= f.text_field :title_cont, size: "40",placeholder: "映画名/出演者名" %>
+                <%= f.submit ("  検索  ") %>
               <% end %>
             </dl>
           </nav>

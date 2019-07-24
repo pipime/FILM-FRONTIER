@@ -16,15 +16,8 @@ class Movie < ApplicationRecord
 
 	default_scope -> { order(title: :desc) }
 
-	def self.search(search)
-	  if search.present?
-	  	Movie.joins(:cast).where(['title LIKE? OR cast LIKE?', "%#{search}%", "%#{search}%"])
-	  else
-	  	Movie.all
-	  end
-	end
 
-	def liked_by?(user)
-	  likes.where(user_id: user.id).exists?
-	end
+  def liked_by?(user)
+  	likes.where(user_id: user.id).exists?
+  end
 end

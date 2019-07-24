@@ -3,18 +3,22 @@
 
   <%= form_for @user, url: admin_user_path(@user) do |f| %>
 
-  	<table>
-  		<p>ニックネーム</p>
-  		  <%= f.text_field :name, placeholder:"ニックネーム"%><br>
+    <h5>プロフィール画像</h5>
+      <%= f.attachment_field :profile_image %>
 
-  		<p>メールアドレス</p>
-  		　<%= f.text_field :email, placeholder:"メールアドレス"%><br>
+  	<h5>ニックネーム</h5>
+  		<%= f.text_field :name, placeholder:"ニックネーム"%><br>
 
-  		<p>プロフィール</p>
-  		　<%= f.text_area :introduction, placeholder:"プロフィール"%><br>
-  	</table>
+  	<h5>メールアドレス</h5>
+  		<%= f.text_field :email, placeholder:"メールアドレス"%><br>
 
-  	<%= f.submit "編集する" ,class: "btn btn-primary"%>
+  	<h5>プロフィール</h5>
+  		<%= f.text_area :introduction, placeholder:"プロフィール", size: "50" %><br>
+
+<p></p>
+    <tr>
+  	  <%= f.submit "編集する" ,class: 'btn btn-success' %>
+    </tr>
 
   <% end %>
 

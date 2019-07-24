@@ -1,9 +1,10 @@
 <h1>マイページ</h1>
 
   <h3>ユーザー情報</h3>
-    <table class="mypage-infobox", border="1">
+    <table class="table">
     	<div class= "mypage-show-jacket">
     		<%= attachment_image_tag @user, :profile_image, fallback: "no_images.png", size: '150x150' %>
+      </div>
 
       <tr>
       	  <td class="mypage-infobox-title">ニックネーム</td>
@@ -21,6 +22,5 @@
 
  <p> <%= link_to"プロフィール編集", edit_user_path(current_user), class: 'btn btn-primary' %> </p>
 
-<dr>
-  <dr>
-    <%= link_to "退会" , user_resign_path, class: 'btn btn-danger' %>
+
+ <p> <%= link_to "退会" , user_resign_path, class: 'btn btn-danger' %> </p>

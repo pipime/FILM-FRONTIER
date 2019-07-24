@@ -16,7 +16,6 @@ Rails.application.routes.draw do
   namespace :admin do
     get "search_users" => "users#search",as: 'search_users'
     get "search_movies" => "movies#search", as:'search_movies'
-
     resources :users,        only:[:index, :show, :edit, :update, :destroy]
     resources :movies,       only:[:new, :create, :edit, :update, :destroy, :show, :index] do
     resources :casts,        only:[:edit]
@@ -32,10 +31,9 @@ Rails.application.routes.draw do
 
     get "search_users" => "movies#search",as: 'search_users'
     get "search_movies" => "movies#search", as:'search_movies'
-
     resources :users,        only:[:show, :edit, :update, :resign, :destroy]
-    resources :movies,       only:[:index, :show] do
-    resources :reviews,      only:[:new, :create, :edit, :update, :destroy]
+    resources :movies,       only:[:new, :create, :index, :show, :destroy] do
+    resource  :reviews,      only:[:create, :destroy]
     resource  :likes,        only:[:create, :destroy]
     end
 

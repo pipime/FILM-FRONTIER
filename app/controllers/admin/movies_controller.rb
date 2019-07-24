@@ -1,22 +1,17 @@
 class Admin::MoviesController < ApplicationController
     before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
 
-  def new
-    @movie = Movie.new
+  def index
+    @movies = Movie.all
+    @movies = Movie.page(params[:page]).reverse_order
   end
 
   def show
     @movie = Movie.find(params[:id])
   end
 
-  def index
-    @movies = Movie.all
-    @movies = Movie.page(params[:page]).reverse_order
-  end
-
-  def search
-    @movies = Movie.search(params[:search])
-    render :search
+  def new
+    @movie = Movie.new
   end
 
   def create
@@ -35,9 +30,6 @@ class Admin::MoviesController < ApplicationController
   end
 
   def update
-  end
-
-  def update
     @movie = Movie.find(params[:id])
     if @movie.update(movie_params)
       flash[:notice] = "映画: " + @movie.title + "を編集しました"
@@ -49,9 +41,6 @@ class Admin::MoviesController < ApplicationController
   end
 
   def destoy
-  end
-
-  def search
   end
 
   private

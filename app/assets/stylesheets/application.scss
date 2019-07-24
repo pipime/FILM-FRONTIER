@@ -41,6 +41,16 @@ header {
   width: 100%;
 }
 
+a {
+  color: #ca080e;
+}
+
+.navbar {
+  color: white;
+  background-color: black;
+  padding: 0 0 0 0;
+}
+
 .clearfix::after {
   content: "";
   display: block;

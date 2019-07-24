@@ -1,8 +1,10 @@
 <h1>ユーザー詳細</h1>
 
   <h3>ユーザー情報</h3>
-    <table>
+    <table class="table">
       <%= attachment_image_tag @user, :profile_image, fallback: "no_images.png", size: '150x150' %>
+
+      <thead class="thead-dark">
     	<tr>
             <td>ニックネーム</td>
             <td><%= @user.name %></td>
@@ -15,6 +17,7 @@
             <td>プロフィール</td>
             <td><%= @user.introduction %></td>
     	</tr>
+
     </table>
         <br>
       <br>

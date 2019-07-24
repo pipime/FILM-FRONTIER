@@ -1,20 +1,20 @@
 class ReviewsController < ApplicationController
 
-  before_action :authenticate_user!,  only: %i[new create edit update destroy]
+  before_action :authenticate_user!,  only: %i[create destroy]
 
   def new
   end
 
   def create
     movie = Movie.find(params[:movie_id])
-	# @review = movie.reviews.build(review_params)
-	review = Review.new(review_params)
-	review.movie_id = movie.id
-	review.user_id = current_user.id
-	if review.save
+	  # @review = movie.reviews.build(review_params)
+	  review = Review.new(review_params)
+	  review.movie_id = movie.id
+	  review.user_id = current_user.id
+	 if review.save
 	  flash[:success] = "レビューしました"
 	  redirect_back(fallback_location: movie_url(movie.id))
-	else
+	 else
 	  flash[:danger] = "レビューできません"
 	  redirect_back(fallback_location: movie_url(movie.id))
 	end

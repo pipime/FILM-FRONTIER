@@ -26,6 +26,6 @@
         <h4> 出演者</h4>
         <%= f.select :cast_id, Cast.all.map{|c| [c.cast, c.id] } %>
 
-        <br>
+        <p></p><br>
         <%= f.submit '登録', id:"back" , class: "btn btn-dark"%>
     <% end %>
