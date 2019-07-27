@@ -1,63 +1,63 @@
-  <div>
+<div>
     <h2><%= @movie.title %></h2>
-	    <%= attachment_image_tag @movie, :jacket_image, fallback: "nono_images.png", size: '260x364' %>
-  <% if @user == current_user && user_signed_in? %>
-    <% if @movie.liked_by?(current_user) %>
+	    <%= attachment_image_tag @movie, :jacket_image, fallback: "/images/nono_images.png", size: '260x364' %>
+  <p>
+    <% if user_signed_in? %>
+      <% if @movie.liked_by?(current_user) %>
         <%= link_to movie_likes_path(@movie), method: :delete do %>
           <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
           <%= @movie.likes.count %> いいね
         <% end %>
-    <% else %>
+      <% else %>
         <%= link_to movie_likes_path(@movie), method: :post do %>
           <i class="fa fa-heart-o" aria-hidden="true"></i>
           <%= @movie.likes.count %> いいね
         <% end %>
+      <% end %>
     <% end %>
-   <% end %>
+  </p>
 
     <P><%= @movie.year.year %>制作の映画</P>
     <p>ジャンル:<%= @movie.genre.genre %></p>
     <p>出演者:<%= @movie.cast.cast %></p>
     <h4>あらすじ</h4>
     <p><%= @movie.summary %></p>
-  </div>
+</div>
 
 <p></p><dr>
 
-    <h2>レビュー投稿</h2>
+    <h2>コメント投稿</h2>
       <%= form_with(model: @review, url: movie_reviews_path(@movie),method: :post, local: true) do |f| %>
         <%= f.text_area :body, class: "form-control w-75" %>
         <%= f.submit "投稿する", class: "btn btn-primary" %>
       <% end %>
 
 <p></p><dr>
-
-<h2>レビュー一覧</h2>
-  <table class="table">
-    <thead class="thead-dark">
-      <div class="container">
-      <tr>
-        <th></th>
-        <th>ニックネーム</th>
-        <th>コメント</th>
-        <th>日時</th>
-      </tr>
-    </thead>
+  <h2>コメント一覧</h2>
+    <table class="table">
+      <thead class="thead-dark">
+          <tr>
+            <th></th>
+            <th>ニックネーム</th>
+            <th>コメント</th>
+            <th>日時</th>
+            <th></th>
+          </tr>
+      </thead>
 
    <% @movie.reviews.each do |review| %>
      <tbody>
-      <tr>
-        <td><%= attachment_image_tag @user, :profile_image, fallback: "no_images.png", size: '100x100' %></td>
-　　　　　<td><%= review.user.name %></td>
-        <td><%= review.body %></td>
-        <td><%= review.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+       <tr>
+         <td><%= attachment_image_tag @user, :profile_image, fallback: "/images/no_images.png", size: '75x75' %></td>
+　　　　　 <td><%= review.user.name %></td>
+         <td><%= review.body %></td>
+         <td><%= review.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+         <td>
+          <% if review.user == current_user %>
+            <%= link_to "削除", movie_review_path(@movie, review), method: :delete %>
+          <% end %>
+        </td>
       </tr>
-
-        <% if @review.user == current_user %>
-          <%= link_to "削除", movie_reviews_path(@review), method: :delete %>
-        <% end %>
-
-    </div>
     </tbody>
   <% end %>
 </table>

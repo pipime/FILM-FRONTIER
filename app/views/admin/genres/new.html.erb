@@ -2,7 +2,6 @@
   <%= form_for @genre, url: admin_genres_path do |f| %>
 
       <h1> ジャンル追加</h1>
-        <p> genre</p>
 
           <%= f.text_field :genre %>
 
@@ -14,6 +13,6 @@
 
   <% @genres.each do |genre| %>
 
-        <p> <%= genre.id %>::<%= genre.genre %></p>
+        <p><%= genre.genre %></p>
 
   <% end %>

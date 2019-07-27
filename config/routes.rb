@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     get "search_movies" => "movies#search", as:'search_movies'
     resources :users,        only:[:show, :edit, :update, :resign, :destroy]
     resources :movies,       only:[:new, :create, :index, :show, :destroy] do
-    resource  :reviews,      only:[:create, :destroy]
+    resources :reviews,      only:[:create, :destroy]
     resource  :likes,        only:[:create, :destroy]
     end
 

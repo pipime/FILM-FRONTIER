@@ -2,7 +2,6 @@
   <%= form_for @year, url: admin_years_path do |f| %>
 
       <h1> 制作年追加</h1>
-        <p> year</p>
 
           <%= f.text_field :year %>
 
@@ -14,6 +13,6 @@
 
   <% @years.each do |year| %>
 
-        <p> <%= year.id %>::<%= year.year %></p>
+        <p><%= year.year %></p>
 
   <% end %>

@@ -2,7 +2,7 @@
 <% @movies.each do |movie| %>
   <div>
     <%= link_to admin_movie_path(movie) do %>
-      <%= attachment_image_tag movie, :jacket_image, class: "item-index-jacket-image", fallback: "nono_images.png", size: '260x364' %>
+      <%= attachment_image_tag movie, :jacket_image, class: "item-index-jacket-image", fallback: "/images/nono_images.png", size: '260x364' %>
     <% end %>
 
       <p><%= link_to admin_movie_path(movie) do %>

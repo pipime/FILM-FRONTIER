@@ -18,7 +18,7 @@ class Admin::CastsController < ApplicationController
   	  redirect_to new_admin_movie_path
   	else
   	  flash[:notice] = "出演者追加に失敗しました"
-  	  redirect_to new_admin_cast_path
+      redirect_to new_admin_cast_path
   	end
   end
 
@@ -34,6 +34,6 @@ class Admin::CastsController < ApplicationController
 
   private
   def cast_params
-  	params.require(:cast).permit(:cast)
+    params.require(:cast).permit(:cast)
   end
 end

@@ -19,7 +19,7 @@
           <% if admin_signed_in? %>
             <div class="logo">
               <%= link_to admin_movies_path do %>
-                <%= image_tag "logo.png", class: "logo-image", size: "240x100" %>
+                <%= image_tag "/images/logo.png", class: "logo-image", size: "240x100" %>
               <% end %>
              </div>
                <li class="nav-item">
@@ -33,7 +33,7 @@
                </li>
                <dl class="searchbox">
                 <%= search_form_for @search, url: movies_path do |f| %>
-                  <%= f.text_field :title_cont, size: "40",placeholder: "映画名/出演者名" %>
+                  <%= f.text_field :title_cont, size: "40",placeholder: "映画名" %>
                   <%= f.submit ("  検索  ") %>
                 <% end %>
               </dl>
@@ -47,18 +47,18 @@
           <nav>
             <div class="logo">
               <%= link_to movies_path do %>
-                <%= image_tag "logo.png", class: "logo-image", size: "240x100" %>
+                <%= image_tag "/images/logo.png", class: "logo-image", size: "240x100" %>
               <% end %>
             </div>
               <li class="nav-item">
-                <%= link_to "  検索  ", user_path(current_user), :style => "color:white;", :class =>"fas fa-user" %>
+                <%= link_to "マイページ", user_path(current_user), :style => "color:white;", :class =>"fas fa-user" %>
               </li>
               <li class="nav-item">
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete, :style => "color:white;", :class =>"fas fa-sign-out-alt" %>
               </li>
               <dl class="searchbox">
                 <%= search_form_for @search, url: movies_path do |f| %>
-                  <%= f.text_field :title_cont, size: "40",placeholder: "映画名/出演者名" %>
+                  <%= f.text_field :title_cont, size: "40",placeholder: "映画名" %>
                   <%= f.submit ("  検索  ") %>
                 <% end %>
               </dl>
@@ -68,7 +68,7 @@
           <nav>
             <div class="logo">
               <%= link_to movies_path do %>
-                <%= image_tag "logo.png", class: "logo-image", size: "240x100" %>
+                <%= image_tag "/images/logo.png", class: "logo-image", size: "240x100" %>
               <% end %>
             </div>
             <li class="nav-item">
@@ -79,7 +79,7 @@
             </li>
             <dl class="searchbox">
               <%= search_form_for @search, url: movies_path do |f| %>
-                <%= f.text_field :title_cont, size: "40",placeholder: "映画名/出演者名" %>
+                <%= f.text_field :title_cont, size: "40",placeholder: "映画名" %>
                 <%= f.submit ("  検索  ") %>
               <% end %>
             </dl>
@@ -88,9 +88,9 @@
        </div>
       </header>
 
-      <div class='body'>
-        <div class='margin'></div>
-      </div>
+    <div class='body'>
+      <div class='margin'></div>
+    </div>
 
       <main>
         <div class="container">
@@ -98,10 +98,11 @@
             <div class="wrapper">
               <% if flash[:notice] %>
                 <p><%= flash[:notice] %></p>
-             <% end %>
-          <%= yield %>
+              <% end %>
+            <%= yield %>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </body>
+      </main>
+    </body>
 </html>

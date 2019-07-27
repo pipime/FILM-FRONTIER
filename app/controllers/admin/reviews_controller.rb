@@ -12,10 +12,8 @@ class Admin::ReviewsController < ApplicationController
   end
 
   def destroy
-    review = Review.find(params[:id])
-    @review = current_user.reviews.find(params[:id])
-    review.movie_id = movie.id
-    review.destroy
+    @review = Review.find(params[:id])
+    @review.destroy
     redirect_to admin_movie_path
   end
 
